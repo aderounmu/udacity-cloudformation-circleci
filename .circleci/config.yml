@@ -33,9 +33,10 @@ jobs:
   
   smoke_test: 
     docker:
-      - image: amazon/aws-cli
+      - image: alpine:latest
     steps:
       - run: apk add --update curl
+      - run: apt install awscli
       - run:
           name: smoke test
           command: |
