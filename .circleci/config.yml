@@ -36,7 +36,7 @@ jobs:
       - image: alpine:latest
     steps:
       - run: apk add --update curl
-      - run: apt install awscli
+      - run: apk add --no-cache aws-cli
       - run:
           name: smoke test
           command: |
