@@ -15,6 +15,8 @@ commands:
           # ${CIRCLE_WORKFLOW_ID:0:5} takes the first 5 chars of the variable CIRCLE_CI_WORKFLOW_ID 
           command: |
             aws cloudformation delete-stack --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:7}
+          when: on_fail
+          
 jobs:
   create_infrastructure: 
     docker:
@@ -46,7 +48,6 @@ jobs:
               return 1
             fi 
       - destroy_environment
-         when: on_fail
             
 # Sequential workflow
 workflows:
